@@ -33,5 +33,5 @@ I fondi sono suddivisi in tre classi secondo la classificazione Morningstar:
 Questa segmentazione consente un'analisi comparativa tra classi di rischio e rendimento differenti, nonché l'adattamento della DEA ai vari profili di rischio.
 
 ## Requisiti
-- **MATLAB**: utilizzato per la modellizzazione e l'esecuzione della DEA.
+- **Libreria Pyfrontier**: utilizzato per la modellizzazione e l'esecuzione della DEA.
 - **Dataset** in formato `.csv` contenente i dati storici e i parametri necessari per l'analisi.
