@@ -53,4 +53,4 @@ Per eseguire il progetto sono necessari i seguenti strumenti e librerie:
 - **Libreria Pyfrontier**: per l'implementazione della DEA.  
 - **Pandas**: per la gestione del dataset.  
 - **Numpy**: per il calcolo degli indicatori statistici.  
-- **Matplotlib/Seaborn**: per la visualizzazione dei risultati.
+- **Matplotlib**: per la visualizzazione dei risultati.
