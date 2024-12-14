@@ -1,4 +1,4 @@
-dmu,Punteggio di efficienza,Efficienza,Ha slack,Slack input 1,Slack input 2,Slack input 3,Slack output 1
+dmu,Punteggio di efficienza,Efficienza,Ha slack,Slack deviazione standard,Slack beta,Slack commissione d'ingresso,Slack rednimento atteso
 AcomeA_PMITALIA_ESG_A1,0.796651,Non efficiente,Sì,0.00032775374,-0.0065548884,0.0071291979,0.0
 Acomea_Pmitalia_Esg_P2,1.0,Efficiente,No,0.0,0.0,0.0,0.0
 Allianz_Azioni_Italia_All_Stars_A,1.0,Efficiente,No,0.0,0.0,0.0,0.0
