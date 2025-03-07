@@ -1,56 +1,66 @@
-# Analisi dell'Efficienza dei Fondi di Investimento tramite DEA - Modello CCR Input-Oriented (3 Input, 1 Output)
+# Efficiency Analysis of Investment Funds Using DEA  
+## **CCR Input-Oriented Model (3 Inputs, 1 Output)**  
 
-## Descrizione del Progetto
-Questo progetto utilizza la **Data Envelopment Analysis (DEA)** per valutare l'efficienza di fondi d'investimento, considerando una prospettiva più ampia di fattori che influenzano il rapporto rischio-rendimento. Il modello CCR input-oriented applicato minimizza i costi e i rischi (input) necessari per ottenere un rendimento atteso (output).  
-
----
-
-## Dataset
-Il dataset contiene informazioni sui rendimenti e i costi associati ai fondi, calcolati da serie storiche nel periodo **gennaio 2021 - giugno 2023**.  
-
-### Variabili utilizzate:
-- **Input**:
-  - **Deviazione Standard**: volatilità dei rendimenti logaritmici settimanali.  
-  - **Beta**: sensibilità alle variazioni del mercato, calcolato rispetto al FTSE Italia All Share.  
-  - **Commissioni di Ingresso**: percentuale di costo iniziale applicata agli investimenti.  
-- **Output**:
-  - **Rendimento Atteso**: media annua dei rendimenti logaritmici.
+### **Project Description**  
+This project utilizes **Data Envelopment Analysis (DEA)** to evaluate the efficiency of investment funds, considering a broader perspective of factors influencing the risk-return relationship. The applied **CCR input-oriented model** minimizes costs and risks (**inputs**) required to achieve an **expected return** (**output**).  
 
 ---
 
-## Metodologia
-### Calcolo degli Indicatori
-1. **Deviazione Standard**:  
-   - Calcolata sui rendimenti logaritmici settimanali.  
-   - Rappresenta il rischio complessivo (volatilità) del fondo.  
+## **Dataset**  
+The dataset contains information on returns and costs associated with funds, calculated from historical series in the period **January 2021 - June 2023**.  
 
-2. **Beta**:  
-   - Calcolato come il rapporto tra la covarianza dei rendimenti del fondo e del mercato (FTSE Italia All Share) e la varianza dei rendimenti del mercato.  
-   - Misura il rischio sistematico, ossia la sensibilità alle oscillazioni del mercato.  
+### **Variables Used**  
+- **Inputs:**  
+  - 📉 **Standard Deviation** – Volatility of weekly logarithmic returns.  
+  - 📊 **Beta** – Sensitivity to market fluctuations, calculated relative to the FTSE Italia All Share.  
+  - 💰 **Entry Fees** – Percentage of initial cost applied to investments.  
 
-3. **Commissioni di Ingresso**:  
-   - Rilevate come percentuale sul capitale iniziale investito.  
-   - Rappresentano un costo fisso indipendente dalle performance del fondo.  
-
-4. **Rendimento Atteso**:  
-   - Media aritmetica dei rendimenti logaritmici annualizzati.  
-
-### Modello DEA - CCR Input-Oriented
-Il modello DEA utilizza **Pyfrontier** per analizzare l'efficienza relativa dei fondi.  
-- Obiettivo: minimizzare gli input (Deviazione Standard, Beta e Commissioni di Ingresso) necessari per raggiungere il rendimento atteso (output).  
-- L'efficienza viene espressa come un punteggio compreso tra 0 e 1, dove i fondi con punteggio pari a 1 sono considerati **efficienti** rispetto agli altri.  
-
-L'analisi confronta i fondi all'interno delle tre classi definite da Morningstar:
-1. **Azionario Italiano**  
-2. **Obbligazionario Governativo EUR**  
-3. **Bilanciato Moderato Europeo**  
+- **Output:**  
+  - 🚀 **Expected Return** – Annual average of logarithmic returns.  
 
 ---
 
-## Requisiti
-Per eseguire il progetto sono necessari i seguenti strumenti e librerie:  
-- **Python 3.8+**  
-- **Libreria Pyfrontier**: per implementare la DEA.  
-- **Pandas**: per la gestione del dataset.  
-- **Numpy**: per calcoli statistici.  
-- **Matplotlib**: per la visualizzazione grafica dei risultati.
+## **Methodology**  
+
+### **Calculation of Indicators**  
+1. **Standard Deviation**  
+   - Calculated on weekly logarithmic returns.  
+   - Represents the overall risk (**volatility**) of the fund.  
+
+2. **Beta**  
+   - Calculated as the ratio between the covariance of fund and market returns (**FTSE Italia All Share**) and the variance of market returns.  
+   - Measures **systematic risk**, i.e., sensitivity to market fluctuations.  
+
+3. **Entry Fees**  
+   - Recorded as a **percentage** of the initial invested capital.  
+   - Represents a **fixed cost** independent of fund performance.  
+
+4. **Expected Return**  
+   - Arithmetic **mean of annualized logarithmic returns**.  
+
+### **DEA Model - CCR Input-Oriented**  
+The DEA model uses **Pyfrontier** to analyze the relative efficiency of funds.  
+
+- **Objective**: Minimize inputs (**Standard Deviation, Beta, and Entry Fees**) required to achieve the **expected return** (**output**).  
+- **Efficiency** is expressed as a **score ranging from 0 to 1**, where funds with a score of **1** are considered **efficient** relative to others.  
+
+The analysis compares funds within **three categories** defined by Morningstar:  
+1. **Italian Equity**  
+2. **Euro Government Bonds**  
+3. **Moderate European Balanced**  
+
+---
+
+## **Requirements**  
+To run the project, the following tools and libraries are required:  
+
+- 🐍 **Python 3.8+**  
+- 📦 **Pyfrontier** – for implementing DEA  
+- 🐼 **Pandas** – for dataset management  
+- 🔢 **NumPy** – for statistical calculations  
+- 📈 **Matplotlib** – for graphical visualization of results  
+
+---
+
+# Install dependencies
+pip install pandas numpy matplotlib pyfrontier  
