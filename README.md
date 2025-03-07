@@ -1,48 +1,72 @@
-# Analisi dell'Efficienza dei Fondi di Investimento tramite DEA
+# Analisi dell'Efficienza dei Fondi Comuni Italiani tramite DEA
 
 ## Descrizione del Progetto
-Questo progetto utilizza la tecnica statistica **Data Envelopment Analysis (DEA)** per valutare l'efficienza di fondi d'investimento appartenenti a diverse classi di rischio e rendimento. L'obiettivo principale è identificare i fondi più efficienti nel rapporto tra input (rischi e costi) e output (rendimenti attesi), fornendo un modello flessibile per analisi comparativa e ottimizzazione.
+Questo progetto applica la tecnica **Data Envelopment Analysis (DEA)** per valutare l'efficienza relativa dei fondi comuni d'investimento italiani. L'obiettivo principale è analizzare il rapporto tra input (rischi e costi) e output (rendimenti attesi) per identificare i fondi più efficienti, fornendo un modello flessibile per l'ottimizzazione e il benchmarking.
 
-La metodologia applicata è basata sul **modello CCR Input-Oriented**, con la possibilità di estendere l'analisi a modelli alternativi o orientamenti diversi. 
-
-Il progetto è sviluppato interamente in Python utilizzando la libreria **Pyfrontier**.
+La metodologia si basa sul **modello CCR Input-Oriented**, con estensioni al modello BCC e altre varianti per considerare rendimenti di scala variabili. Il progetto è sviluppato in Python, utilizzando la libreria **Pyfrontier** per l'implementazione della DEA.
 
 ---
 
 ## Dataset
-Il dataset di base include informazioni sui fondi d'investimento, con serie storiche di rendimenti da gennaio 2021 a giugno 2023. I dati sono pre-processati per calcolare gli indicatori di rischio e rendimento necessari all'analisi DEA.
+Il dataset include informazioni su **52 fondi comuni d'investimento** italiani, suddivisi in tre categorie principali secondo la classificazione Morningstar:
+1. **Azionario Italia** (22 fondi)
+2. **Obbligazionario Governativo EUR** (15 fondi)
+3. **Bilanciati Moderati EUR** (15 fondi)
+
+I dati coprono il periodo dal **01/01/2019 al 30/06/2021**, un intervallo caratterizzato da eventi macroeconomici significativi come la pandemia di COVID-19.
 
 ### Variabili utilizzate:
 - **Input**:
-  - **Deviazione Standard**: misura della volatilità dei rendimenti logaritmici.
+  - **Deviazione Standard**: misura della volatilità dei rendimenti logaritmici annualizzati.
   - **Beta**: sensibilità del fondo alle variazioni del mercato (calcolato rispetto al FTSE Italia All Share).
-  - **Commissioni d'Ingresso**: costi iniziali sostenuti dagli investitori(%)
+  - **Commissioni d'Ingresso**: costi iniziali sostenuti dagli investitori (in %).
 - **Output**:
   - **Rendimento Atteso**: media annua dei rendimenti logaritmici.
 
-### Classificazione dei Fondi:
-I fondi sono suddivisi in tre categorie, basate sulla classificazione Morningstar:
-1. **Azionario Italiano**
-2. **Obbligazionario Governativo EUR**
-3. **Bilanciato Moderato Europeo**
+### Fonti dei dati:
+- **Morningstar**: per la classificazione dei fondi e le commissioni d'ingresso.
+- **Investing.com**: per le serie storiche settimanali dei rendimenti.
 
 ---
 
 ## Metodologia
 1. **Calcolo degli Indicatori**:
-   - **Deviazione Standard**: calcolata sui rendimenti logaritmici settimanali.
-   - **Beta**: determinato come rapporto tra la covarianza dei rendimenti del fondo e del mercato, e la varianza dei rendimenti del mercato.
-   - **Rendimento Atteso**: calcolato come media aritmetica dei rendimenti logaritmici annualizzati.
+   - **Deviazione Standard**: calcolata sui rendimenti logaritmici settimanali e annualizzata.
+   - **Beta**: determinato tramite regressione lineare tra i rendimenti del fondo e quelli del mercato.
+   - **Rendimento Atteso**: calcolato come media dei rendimenti logaritmici annualizzati.
 
 2. **DEA con Pyfrontier**:
-   Il modello CCR input-oriented è implementato utilizzando **Pyfrontier**, una libreria Python specifica per la Data Envelopment Analysis. Questo approccio minimizza gli input richiesti per raggiungere un rendimento target.
+   Il modello CCR input-oriented è implementato utilizzando **Pyfrontier**, una libreria Python specifica per la Data Envelopment Analysis. Questo approccio minimizza gli input (rischi e costi) necessari per raggiungere un determinato livello di rendimento.
 
 3. **Analisi Comparativa**:
-   L'efficienza viene analizzata separatamente per ciascuna classe di fondi, permettendo un confronto omogeneo tra fondi con profili di rischio simili.
+   L'efficienza viene analizzata sia all'interno di ciascuna categoria di fondi (intra-categoria) che tra le diverse categorie (inter-categoria), permettendo un confronto omogeneo e una valutazione complessiva.
+
+4. **Estensioni**:
+   - **Inclusione di ETF**: sono stati aggiunti due ETF (uno azionario e uno obbligazionario) per confrontare l'efficienza dei fondi passivi con quelli a gestione attiva.
+   - **Analisi dei fondi ESG**: è stata valutata l'efficienza dei fondi che integrano criteri ambientali, sociali e di governance (ESG) rispetto ai fondi tradizionali.
+
+---
+
+## Risultati Principali
+- **Fondi Obbligazionari più Efficienti**: I fondi obbligazionari governativi EUR hanno registrato il punteggio di efficienza più alto (0,856), grazie alla loro bassa volatilità e costi contenuti.
+- **Fondi Azionari meno Efficienti**: Nonostante rendimenti più elevati, i fondi azionari italiani hanno mostrato un'efficienza inferiore (0,575) a causa della maggiore esposizione al rischio.
+- **ETF**: L'ETF obbligazionario ha raggiunto un'efficienza massima (1,000), mentre l'ETF azionario ha ottenuto un punteggio inferiore (0,631), evidenziando che la gestione passiva non garantisce automaticamente efficienza.
+- **Fondi ESG**: I fondi ESG hanno registrato un'efficienza leggermente inferiore rispetto ai fondi tradizionali, suggerendo che i criteri di sostenibilità non si traducono necessariamente in un vantaggio finanziario.
 
 ---
 
 ## Requisiti
 Per eseguire il progetto sono necessari i seguenti strumenti e librerie:
 - **Python 3.8+**
-- **Libreria Pyfrontier**: per l'implementazione
+- **Libreria Pyfrontier**: per l'implementazione della DEA.
+- **Pandas**: per la gestione e l'analisi dei dati.
+- **NumPy**: per i calcoli numerici.
+- **Matplotlib**: per la visualizzazione dei risultati.
+- **mpl_toolkits**: per la visualizzazione dei risultati.
+
+---
+
+## Come Utilizzare il Codice
+1. Clona il repository:
+   ```bash
+   git clone https://github.com/tuo-username/nome-repository.git
