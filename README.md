@@ -11,12 +11,12 @@ The dataset contains information on returns and costs associated with funds, cal
 
 ### **Variables Used**  
 - **Inputs:**  
-  - 📉 **Standard Deviation** – Volatility of weekly logarithmic returns.  
-  - 📊 **Beta** – Sensitivity to market fluctuations, calculated relative to the FTSE Italia All Share.  
-  - 💰 **Entry Fees** – Percentage of initial cost applied to investments.  
+  - **Standard Deviation** – Volatility of weekly logarithmic returns.  
+  - **Beta** – Sensitivity to market fluctuations, calculated relative to the FTSE Italia All Share.  
+  - **Entry Fees** – Percentage of initial cost applied to investments.  
 
 - **Output:**  
-  - 🚀 **Expected Return** – Annual average of logarithmic returns.  
+   **Expected Return** – Annual average of logarithmic returns.  
 
 ---
 
@@ -54,11 +54,11 @@ The analysis compares funds within **three categories** defined by Morningstar:
 ## **Requirements**  
 To run the project, the following tools and libraries are required:  
 
-- 🐍 **Python 3.8+**  
-- 📦 **Pyfrontier** – for implementing DEA  
-- 🐼 **Pandas** – for dataset management  
-- 🔢 **NumPy** – for statistical calculations  
-- 📈 **Matplotlib** – for graphical visualization of results  
+- **Python 3.8+**  
+- **Pyfrontier** – for implementing DEA  
+- **Pandas** – for dataset management  
+- **NumPy** – for statistical calculations  
+- **Matplotlib** – for graphical visualization of results  
 
 ---
 
