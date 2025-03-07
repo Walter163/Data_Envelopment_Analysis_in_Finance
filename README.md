@@ -1,66 +1,56 @@
-# Analisi dell'Efficienza dei Fondi Comuni Italiani tramite DEA
+# Analisi dell'Efficienza dei Fondi di Investimento tramite DEA - Modello CCR Input-Oriented (3 Input, 1 Output)
 
 ## Descrizione del Progetto
-Questo progetto applica la tecnica **Data Envelopment Analysis (DEA)** per valutare l'efficienza relativa dei fondi comuni d'investimento italiani. L'obiettivo principale è analizzare il rapporto tra input (rischi e costi) e output (rendimenti attesi) per identificare i fondi più efficienti, fornendo un modello flessibile per l'ottimizzazione e il benchmarking.
-
-La metodologia si basa sul **modello CCR Input-Oriented**, con estensioni al modello BCC e altre varianti per considerare rendimenti di scala variabili. Il progetto è sviluppato in Python, utilizzando la libreria **Pyfrontier** per l'implementazione della DEA.
+Questo progetto utilizza la **Data Envelopment Analysis (DEA)** per valutare l'efficienza di fondi d'investimento, considerando una prospettiva più ampia di fattori che influenzano il rapporto rischio-rendimento. Il modello CCR input-oriented applicato minimizza i costi e i rischi (input) necessari per ottenere un rendimento atteso (output).  
 
 ---
 
 ## Dataset
-Il dataset include informazioni su **52 fondi comuni d'investimento** italiani, suddivisi in tre categorie principali secondo la classificazione Morningstar:
-1. **Azionario Italia** (22 fondi)
-2. **Obbligazionario Governativo EUR** (15 fondi)
-3. **Bilanciati Moderati EUR** (15 fondi)
-
-I dati coprono il periodo dal **01/01/2019 al 30/06/2021**, un intervallo caratterizzato da eventi macroeconomici significativi come la pandemia di COVID-19.
+Il dataset contiene informazioni sui rendimenti e i costi associati ai fondi, calcolati da serie storiche nel periodo **gennaio 2021 - giugno 2023**.  
 
 ### Variabili utilizzate:
 - **Input**:
-  - **Deviazione Standard**: misura della volatilità dei rendimenti logaritmici annualizzati.
-  - **Beta**: sensibilità del fondo alle variazioni del mercato (calcolato rispetto al FTSE Italia All Share).
-  - **Commissioni d'Ingresso**: costi iniziali sostenuti dagli investitori (in %).
+  - **Deviazione Standard**: volatilità dei rendimenti logaritmici settimanali.  
+  - **Beta**: sensibilità alle variazioni del mercato, calcolato rispetto al FTSE Italia All Share.  
+  - **Commissioni di Ingresso**: percentuale di costo iniziale applicata agli investimenti.  
 - **Output**:
   - **Rendimento Atteso**: media annua dei rendimenti logaritmici.
-
-### Fonti dei dati:
-- **Morningstar**: per la classificazione dei fondi e le commissioni d'ingresso.
-- **Investing.com**: per le serie storiche settimanali dei rendimenti.
 
 ---
 
 ## Metodologia
-1. **Calcolo degli Indicatori**:
-   - **Deviazione Standard**: calcolata sui rendimenti logaritmici settimanali e annualizzata.
-   - **Beta**: determinato tramite regressione lineare tra i rendimenti del fondo e quelli del mercato.
-   - **Rendimento Atteso**: calcolato come media dei rendimenti logaritmici annualizzati.
+### Calcolo degli Indicatori
+1. **Deviazione Standard**:  
+   - Calcolata sui rendimenti logaritmici settimanali.  
+   - Rappresenta il rischio complessivo (volatilità) del fondo.  
 
-2. **DEA con Pyfrontier**:
-   Il modello CCR input-oriented è implementato utilizzando **Pyfrontier**, una libreria Python specifica per la Data Envelopment Analysis. Questo approccio minimizza gli input (rischi e costi) necessari per raggiungere un determinato livello di rendimento.
+2. **Beta**:  
+   - Calcolato come il rapporto tra la covarianza dei rendimenti del fondo e del mercato (FTSE Italia All Share) e la varianza dei rendimenti del mercato.  
+   - Misura il rischio sistematico, ossia la sensibilità alle oscillazioni del mercato.  
 
-3. **Analisi Comparativa**:
-   L'efficienza viene analizzata sia all'interno di ciascuna categoria di fondi (intra-categoria) che tra le diverse categorie (inter-categoria), permettendo un confronto omogeneo e una valutazione complessiva.
+3. **Commissioni di Ingresso**:  
+   - Rilevate come percentuale sul capitale iniziale investito.  
+   - Rappresentano un costo fisso indipendente dalle performance del fondo.  
 
-4. **Estensioni**:
-   - **Inclusione di ETF**: sono stati aggiunti due ETF (uno azionario e uno obbligazionario) per confrontare l'efficienza dei fondi passivi con quelli a gestione attiva.
-   - **Analisi dei fondi ESG**: è stata valutata l'efficienza dei fondi che integrano criteri ambientali, sociali e di governance (ESG) rispetto ai fondi tradizionali.
+4. **Rendimento Atteso**:  
+   - Media aritmetica dei rendimenti logaritmici annualizzati.  
 
----
+### Modello DEA - CCR Input-Oriented
+Il modello DEA utilizza **Pyfrontier** per analizzare l'efficienza relativa dei fondi.  
+- Obiettivo: minimizzare gli input (Deviazione Standard, Beta e Commissioni di Ingresso) necessari per raggiungere il rendimento atteso (output).  
+- L'efficienza viene espressa come un punteggio compreso tra 0 e 1, dove i fondi con punteggio pari a 1 sono considerati **efficienti** rispetto agli altri.  
 
-## Risultati Principali
-- **Fondi Obbligazionari più Efficienti**: I fondi obbligazionari governativi EUR hanno registrato il punteggio di efficienza più alto (0,856), grazie alla loro bassa volatilità e costi contenuti.
-- **Fondi Azionari meno Efficienti**: Nonostante rendimenti più elevati, i fondi azionari italiani hanno mostrato un'efficienza inferiore (0,575) a causa della maggiore esposizione al rischio.
-- **ETF**: L'ETF obbligazionario ha raggiunto un'efficienza massima (1,000), mentre l'ETF azionario ha ottenuto un punteggio inferiore (0,631), evidenziando che la gestione passiva non garantisce automaticamente efficienza.
-- **Fondi ESG**: I fondi ESG hanno registrato un'efficienza leggermente inferiore rispetto ai fondi tradizionali, suggerendo che i criteri di sostenibilità non si traducono necessariamente in un vantaggio finanziario.
+L'analisi confronta i fondi all'interno delle tre classi definite da Morningstar:
+1. **Azionario Italiano**  
+2. **Obbligazionario Governativo EUR**  
+3. **Bilanciato Moderato Europeo**  
 
 ---
 
 ## Requisiti
-Per eseguire il progetto sono necessari i seguenti strumenti e librerie:
-- **Python 3.8+**
-- **Libreria Pyfrontier**: per l'implementazione della DEA.
-- **Pandas**: per la gestione e l'analisi dei dati.
-- **NumPy**: per i calcoli numerici.
-- **Matplotlib**: per la visualizzazione dei risultati.
-- **mpl_toolkits**: per la visualizzazione dei risultati.
-
+Per eseguire il progetto sono necessari i seguenti strumenti e librerie:  
+- **Python 3.8+**  
+- **Libreria Pyfrontier**: per implementare la DEA.  
+- **Pandas**: per la gestione del dataset.  
+- **Numpy**: per calcoli statistici.  
+- **Matplotlib**: per la visualizzazione grafica dei risultati.
