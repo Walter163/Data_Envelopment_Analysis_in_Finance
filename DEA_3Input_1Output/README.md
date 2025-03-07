@@ -3,13 +3,6 @@
 ## Descrizione del Progetto
 Questo progetto utilizza la **Data Envelopment Analysis (DEA)** per valutare l'efficienza di fondi d'investimento, considerando una prospettiva più ampia di fattori che influenzano il rapporto rischio-rendimento. Il modello CCR input-oriented applicato minimizza i costi e i rischi (input) necessari per ottenere un rendimento atteso (output).  
 
-L'analisi include **tre variabili di input**:
-1. **Deviazione Standard**: come misura della volatilità.  
-2. **Beta**: come misura del rischio sistematico.  
-3. **Commissioni di Ingresso**: per catturare l'impatto dei costi iniziali.  
-
-Questa configurazione consente un'analisi più dettagliata dell'efficienza dei fondi rispetto alla precedente versione con 2 input.
-
 ---
 
 ## Dataset
