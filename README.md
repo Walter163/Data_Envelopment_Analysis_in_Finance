@@ -64,9 +64,3 @@ Per eseguire il progetto sono necessari i seguenti strumenti e librerie:
 - **Matplotlib**: per la visualizzazione dei risultati.
 - **mpl_toolkits**: per la visualizzazione dei risultati.
 
----
-
-## Come Utilizzare il Codice
-1. Clona il repository:
-   ```bash
-   git clone https://github.com/tuo-username/nome-repository.git
